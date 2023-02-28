@@ -1,0 +1,10 @@
+.userlist{
+    position: absolute;
+    top: 5rem;
+    right: 0rem;
+ /* border: 2px solid blue;  */
+     width: 70%;
+    height: 90%;
+    padding: auto;
+    box-sizing: border-box;
+} 

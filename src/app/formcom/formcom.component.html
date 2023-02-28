@@ -1,0 +1,102 @@
+<div style="width:40%; height: auto; position: absolute; right: 5rem; top: 3.5rem;"
+    class="shadow-lg p-3 mb-5 bg-body-tertiary rounded container-fluid">
+    <h3>Add New Employee</h3>
+    <form #empform="ngForm" (ngSubmit)="submit(empform.value)">
+        <!-- {{empmodel | json }} -->
+        <div class="mb-3">
+            <label for="exampleFormControlInput1">Username *</label>
+            <input #name="ngModel" required name="username" type="text" class="form-control" id="exampleFormControlInput1"
+                placeholder="enter username" [(ngModel)]="empmodel.username"
+                [class.is-invalid]="name.touched && name.invalid">
+            <small class="text-danger" [class.d-none]="name.valid || name.untouched">username is required</small>
+        </div>
+
+        <div class="mb-3">
+            <label for="exampleFormControlInput2">Fullname *</label>
+            <input required #full="ngModel" required name="fullname" type="text" class="form-control"
+                id="exampleFormControlInput2" placeholder="enter fullname" [(ngModel)]="empmodel.fullname"
+                [class.is-invalid]="full.touched && full.invalid">
+            <small class="text-danger" [class.d-none]="full.valid || full.untouched">fullname is required</small>
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlInput3">password *</label>
+            <input #pass="ngModel" minlength="8" required type="password" name="password" class="form-control"
+                id="exampleFormControlInput3" placeholder="enter your password" [(ngModel)]="empmodel.password"
+                [class.is-invalid]="pass.errors && pass.touched">
+
+            <div class="abs" *ngIf="pass.errors && (pass.dirty || pass.touched)">
+                <div class="text-danger " *ngIf="pass.errors['required']">password is required</div>
+                <div class="text-danger " *ngIf="pass.errors['minlength'] && pass.touched">password should be of min 8
+                    characters</div>
+
+            </div>
+
+
+
+
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlInput4">Confirm Password *</label>
+            <input required #confrm="ngModel" minlength="8" type="password" name="confirm password" class="form-control"
+                [class.is-invalid]="pass.errors && pass.touched || confrm.touched && confrm.errors" id="exampleFormControlInput4"
+                placeholder="confirm your password" [(ngModel)]="empmodel.confirm_password">
+            <div class="abs">
+                <div class="text-danger"
+                    *ngIf="confrm.value===pass.value&& pass.value!==null && pass.value.length<8 && pass.touched &&confrm.touched">password
+                    should be of min 8 characters </div>
+                <div class="text-danger" *ngIf="confrm.value!==pass.value && confrm.touched">password not matches
+
+
+                </div>
+            </div>
+
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlInput5">Email *</label>
+            <input required email #mail="ngModel" type="email" name="email" class="form-control"
+                id="exampleFormControlInput5" placeholder="enter email" [(ngModel)]="empmodel.email"
+                [class.is-invalid]="mail.errors && mail.touched" >
+            <div class="abs" *ngIf="mail.invalid || mail.errors ">
+                <div class="text-danger" *ngIf="mail.errors && mail.errors['required'] &&mail.touched">email is required
+                </div>
+                <div class="text-danger" *ngIf="mail.errors && mail.errors['email'] &&mail.touched">email is invalid
+                </div>
+
+            </div>
+
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlInput6">Date of Joining *</label>
+            <input required type="date" name="date of joining" class="form-control" id="exampleFormControlInput6"
+                placeholder="what is your DOJ" [(ngModel)]="empmodel.doj">
+
+        </div>
+        <div class="form-group">
+            <label for="select">Role *</label>
+            <select #role="ngModel" (change)="validate(role.value)" (blur)="validate(role.value)" id="select" 
+                name="role" class="custom-select form-control" [(ngModel)]="varry" 
+                [class.is-invalid]="HasError && role.touched">
+                <option value="default"  >Select your role</option>
+                <option  *ngFor="let x of topics">{{x.role}}</option>
+            </select>
+            <div class="text-danger abs" *ngIf="HasError && role.touched">please select a role</div>
+        </div>
+        <div class="form-group">
+            <label for="select2">Supervisor *</label>
+            <select #sup="ngModel" (change)="validate2(sup.value)" (blur)="validate2(sup.value)" name="supervisor"
+                id="select2" class="custom-select form-control" [(ngModel)]="varry2"
+                [class.is-invalid]="HasError2 && sup.touched">
+                <option value="default" selected>select your position</option>
+                <option [value]="x.vue" *ngFor="let x of roless">{{x.name}}</option>
+            </select>
+            <div class="text-danger abs" *ngIf="HasError2 && sup.touched">please select a role</div>
+        </div>
+        <button type="submit" [disabled]="empform.form.invalid || HasError || HasError2" id="submit"
+            class="btn btn-success" (click)="OnSubmit()" >Submit</button>
+        <!-- <button type="reset" id="reset" class="btn btn-secondary">Reset</button> -->
+    </form>
+
+
+
+</div>
+

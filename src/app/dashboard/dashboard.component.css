@@ -1,0 +1,10 @@
+.btn1{
+   display: grid;
+   grid-template-columns: repeat(4,auto);
+}
+.btn2{
+    width:auto;
+    height: 80%;
+    box-sizing: border-box;
+    margin: 3%;
+}

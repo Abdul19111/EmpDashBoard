@@ -1,0 +1,24 @@
+<div  class="container-fluid userlist">
+    <h1 style="text-align: center;" >Role List</h1> 
+    <ag-grid-angular
+     style="width: 100%; height: 93%"
+     class="ag-theme-alpine-dark"
+     [rowHeight]="rowHeight"
+     [columnDefs]="columnDefs"
+     [defaultColDef]="defaultColDef"
+     [rowData]="rowData"
+     [rowSelection]="'multiple'"
+     [animateRows]="true"
+     (gridReady)="onGridReady($event)"
+     (cellClicked)="onCellClicked($event)"
+     
+     #agGrid
+   ></ag-grid-angular>
+   
+  
+   <button (click)="clearSelection()">Clear Selection</button>
+   <button (click)="SelectAll()">All Select</button>
+   
+
+  </div>
+  

@@ -1,0 +1,21 @@
+<div  class="container-fluid userlist">
+  <h1 style="text-align: center;" >leave list working</h1> 
+  <ag-grid-angular
+   style="width: 100%; height: 93%"
+   class="ag-theme-alpine-dark"
+   [rowHeight]="rowHeight"
+   [columnDefs]="columnDefs"
+   [defaultColDef]="defaultColDef"
+   [rowData]="rowData"
+   [rowSelection]="'multiple'"
+   [animateRows]="true"
+   (gridReady)="onGridReady($event)"
+   (cellClicked)="onCellClicked($event)"
+   
+   #agGrid
+ ></ag-grid-angular>
+ <button (click)="clearSelection()">Clear All Selection</button>
+ <button (click)="SelectAll()">All Select</button>
+ <button (click)="DeleteAll()">All Delete</button>
+ <button (click)="DeleteSelected()">Delete Selected</button>
+</div>

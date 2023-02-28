@@ -1,0 +1,65 @@
+
+<div style="width:40%; height: auto; position: absolute; right: 5rem; top: 3.5rem;"
+    class="shadow-lg p-3 mb-5 bg-body-tertiary rounded container-fluid">
+    <h3>Apply For Leave</h3>
+    <form #empform="ngForm" (ngSubmit)="submit(empform.value)">
+
+        <div class="mb-3">
+            <label for="exampleFormControlInput1">Name :</label>
+            <input #name="ngModel" required name="name" type="text" class="form-control"
+                id="exampleFormControlInput1" placeholder="enter username"
+                [class.is-invalid]="name.touched && name.invalid" ngModel>
+            <small class="text-danger" [class.d-none]="name.valid || name.untouched">name is required</small>
+        </div>
+
+
+
+        <div class="form-group">
+            <label for="select">Apply By :</label>
+            <select #role="ngModel" (change)="validate(role.value)" (blur)="validate(role.value)" id="select" ngModel
+                name="applyby" class="custom-select form-control" [class.is-invalid]="HasError && role.touched">
+                <option value="default" selected>Select your position</option>
+                <option [value]="x.vlaue" *ngFor="let x of topics">{{x.name}}</option>
+            </select>
+            <div class="text-danger abs" *ngIf="HasError && role.touched">please select position</div>
+        </div>
+    
+        <div class="form-group">
+            <label for="select3">Leave Type :</label>
+            <select #leave="ngModel" (change)="validate(leave.value)" (blur)="validate(leave.value)" id="select3" ngModel
+                name="leavetype" class="custom-select form-control select2" [class.is-invalid]="HasError && leave.touched">
+                <option value="default" selected>Select Leave Type</option>
+                <option [value]="x.vue" *ngFor="let x of leaves">{{x.name}}</option>
+            </select>
+            <div class="text-danger abs" *ngIf="HasError && leave.touched">please select a leave type</div>
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlInput6">Date From :</label>
+            <input required type="date" name="fromdate" class="form-control select2" id="exampleFormControlInput6" #datefrom="ngModel" ngModel min="{{currentMin | date:'yyyy-MM-dd'}}" max="{{currentMax | date:'yyyy-MM-dd'}}" (change)="changeDate(datefrom.value,dateto.value)"
+                placeholder="what is your DOJ" [class.is-invalid]="datefrom.invalid && datefrom.touched" >
+                <div class="text-danger abs abs2" *ngIf="datefrom.invalid && datefrom.touched ">please select date</div>
+        </div>
+        
+        <div class="mb-3">
+            <label for="exampleFormControlInput9">Date To :</label>
+            <input required type="date" name="todate" class="form-control" id="exampleFormControlInput9" #dateto="ngModel" ngModel
+              min="{{nextMin | date:'yyyy-MM-dd'}}" max="{{ nextMax | date:'yyyy-MM-dd'}}"
+            (change)="changeDate(datefrom.value,dateto.value)"
+                placeholder="what is your DOJ" [class.is-invalid]="dateto.invalid && dateto.touched" >
+                <div class="text-danger abs abs2" *ngIf="dateto.invalid && dateto.touched ">please select date</div>
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlInput0">Reason :</label>
+            <input #reason="ngModel" required name="reason" type="text" class="form-control"
+                id="exampleFormControlInput0" placeholder="reason for leave"
+                [class.is-invalid]="reason.touched && reason.invalid" ngModel>
+            <small class="text-danger" [class.d-none]="reason.valid || reason.untouched">reason is required</small>
+        </div>
+        
+        <button type="submit" [disabled]="empform.form.invalid || HasError || HasError2" id="submit"
+            class="btn btn-success" (click)="OnSubmit()">Apply</button>
+      
+    </form>
+
+
+</div>

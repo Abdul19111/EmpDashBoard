@@ -1,0 +1,34 @@
+
+<div style="width:35%; height: auto; position: absolute; right: 5rem; top: 5.5rem;"
+    class="shadow-lg p-3 mb-5 bg-body-tertiary rounded container-fluid">
+    <h3>Add Your Role</h3>
+    <form #empform="ngForm" (ngSubmit)="submit(empform.value)">
+
+      
+        <div class="mb-3">
+            <label style="display: inline-block; width: 15%;" for="exampleFormControlInput1"><h5>Role :</h5></label>
+            <input style="display:inline-block; width:80%;" #name="ngModel" required name="name" type="text" class="form-control" 
+                id="exampleFormControlInput1" placeholder="Enter your role"
+                [class.is-invalid]="name.touched && name.invalid" [(ngModel)]="temp">
+            <small style="position: relative; top:1%; left: 15.5%;" class="text-danger" [class.d-none]="name.valid || name.untouched">role is required</small>
+        </div>
+
+
+     
+    
+        
+        
+        
+       
+        
+        
+        <button style="position: relative; left: 3.80rem; top: 0rem;" type="submit" [disabled]="empform.form.invalid || HasError || HasError2" id="submit"
+            class="btn btn-success" (click)="OnSubmit()">Add Role</button>
+            <div style="height: 20px; width: 90%;"></div>
+            <button style="position: relative; left: 20.2rem; top: -3.65rem;" type="submit" id="res"
+            class="btn btn-secondary active" (click)="OnReset()">Reset</button>
+            <!-- <div style="height: 20px; width: 90%;"></div> -->
+    </form>
+
+
+</div>

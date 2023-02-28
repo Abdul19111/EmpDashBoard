@@ -1,0 +1,68 @@
+input {
+  
+    position: relative;
+    left: 50px;
+    display: inline-block;
+    width: 50%;
+    /* display: none; */
+}
+label{
+    font-size: 17px;
+    /* font-weight: bold; */
+    /* border: 2px solid black; */
+    display: inline-block;
+    text-align: right;
+    width: 10rem;
+    position: relative;
+    right: 0px;
+
+}
+select{
+    position: relative;
+    left: 50px;
+    display: inline-block;
+    width: 50%;
+   
+    /* display: none; */
+}
+button[type='submit'] {
+    /* display: none; */
+    position: relative;
+    position: relative;
+    top: 0.8rem;
+    left: 13.15rem;
+}
+
+body{
+    position: relative;
+    top:10px;
+}
+
+#select2{
+margin-top: 1.15rem;
+}
+h3{
+    font-weight: bold;
+}
+button[type='reset'] {
+    /* display: none; */
+    position: relative;
+    position: relative;
+    top: 0.8rem;
+    left: 24.1rem;
+    width: 5rem;
+}
+small{
+    position: relative;
+    left: 13.3rem;
+    bottom: 0rem;
+    display: inline-block;
+    width: 50%;
+    /* border: 2px solid black; */
+}
+.abs{
+    
+    position: relative;
+    left: 13.2rem;
+    top: 0.3rem;
+}

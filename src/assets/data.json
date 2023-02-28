@@ -1,0 +1,24 @@
+[
+    {
+        "serial":"1",
+        "fullname":"John Peter",
+        "username":"nikJhon",
+        "email":"John@v.com",
+        "action":"yes"
+    },
+   
+    {
+        "serial":"2",
+        "fullname":"Hank Peter",
+        "username":"nikHank",
+        "email":"Han@v.com",
+        "action":"yes"
+    },
+    {
+        "serial":"3",
+        "fullname":"John Dorson",
+        "username":"DorJhon",
+        "email":"Dors@v.com",
+        "action":"no"
+    }
+]
